@@ -1,0 +1,13 @@
+{
+  "firstName": "Placksa",
+  "lastName": "Ivan",
+  "address": "Pushkina St., dom. Ckolotushkina",
+  "metroStation": 12,
+  "phone": "+7 495 937 99 92",
+  "rentTime": 2,
+  "deliveryDate": "2024-12-30",
+  "comment": "Везите скорее",
+  "color": [
+    "BLACK"
+  ]
+}
