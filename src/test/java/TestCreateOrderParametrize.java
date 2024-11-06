@@ -1,3 +1,4 @@
+import io.qameta.allure.Description;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -28,6 +29,7 @@ public class TestCreateOrderParametrize {
     }
 
     @Test
+    @Description("Создание 4х заказов")
     public void testCreateOrderWithColorBlack() {
         File json = new File(path);
         forClassController
