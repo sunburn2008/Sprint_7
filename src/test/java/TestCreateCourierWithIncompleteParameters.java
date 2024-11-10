@@ -7,11 +7,14 @@ public class TestCreateCourierWithIncompleteParameters {
 
     CourierController courierController = new CourierController();
 
+    String login = Constant.RANDOM_LOGIN;
+    String password = null;
+    String firstName = null;
+
     @Test
     @Description("Создание курьера c неполными параметрами")
     public void testCreateCourierWithIncompleteParameters() {
-        String json = "{\"login\": \"Misha1308\"}";
-        courierController.postCourier(json)
+        courierController.postCourier(login, password, firstName)
                 .then()
                 .body("message", equalTo("Недостаточно данных для создания учетной записи"))
                 .and()

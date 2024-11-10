@@ -11,19 +11,19 @@ public class TestGetOrderList {
     private final CourierController courierController = new CourierController();
     private final OrderController orderController = new OrderController();
 
-    private String json = "{\"login\": \"" + Constant.RANDOM_LOGIN + "\", \"password\": \"341143\", \"firstName\": \"Mihael_Borisov\"}";
+    String login = Constant.RANDOM_LOGIN;
+    String password = "341143";
+    String firstName = "Mihael_Borisov";
 
     @Test
     @Description("Получение списка заказов")
     public void testGetOrderList() {
+        courierController.postCourier(login, password, firstName);
+
         Integer track = forClassController.postOrder(new File("src/test/resources/CreateOrderWithColorBlack.json"))
                 .then().extract().jsonPath().get("track");
 
-        courierController.postCourier(json);
-        String loginCourier = Constant.RANDOM_LOGIN;
-        String passwordCourier = "341143";
-
-        Integer id = courierController.getCourier(loginCourier, passwordCourier)
+        Integer id = courierController.getCourier(login, password)
                 .then()
                 .extract().jsonPath().get("id");
 

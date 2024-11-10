@@ -22,8 +22,7 @@ public class TestCreateCourier {
             System.out.println("\nКурьер удалён: " + login);
         }
 
-        String json = "{\"login\": \"" + login + "\", \"password\": \"" + password + "\", \"firstName\": \"" + firstName + "\"}";
-        courierController.postCourier(json)
+        courierController.postCourier(login, password, firstName)
                 .then()
                 .body("ok", equalTo(true))
                 .and()

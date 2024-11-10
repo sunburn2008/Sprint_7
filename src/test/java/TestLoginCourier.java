@@ -5,22 +5,23 @@ import static org.hamcrest.CoreMatchers.notNullValue;
 
 public class TestLoginCourier {
     CourierController courierController = new CourierController();
-    String login = "Pisha" + (int) (Math.random() * 100);
+    String login = Constant.RANDOM_LOGIN;
+    String password = "321123";
+    String firstName = "Mihael_Borisov";
 
     @Test
     @Description("Логин существующего курьера")
     public void testLoginCourier() {
-        String json = "{\"login\": \"" + login + "\", \"password\": \"321123\", \"firstName\": \"Mihael_Borisov\"}";
 
-        courierController.postCourier(json);
-        courierController.getCourier(login, "321123")
+        courierController.postCourier(login, password, firstName);
+        courierController.getCourier(login, password)
                 .then()
                 .body("id", notNullValue())
                 .and()
                 .statusCode(200)
                 .extract().jsonPath().get("id");
 
-        Integer id = courierController.getCourier(login, "321123")
+        Integer id = courierController.getCourier(login, password)
                 .then().extract().jsonPath().get("id");
 
         if (id != null) {
